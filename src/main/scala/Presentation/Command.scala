@@ -1,6 +1,6 @@
 package Presentation
 
-import Model.Suppliers
+import Model.{Forecast, Suppliers}
 
 trait Command
 case object PrintRaw extends Command
@@ -11,7 +11,7 @@ case object Unknown extends Command
 
 object Command {
 
-  def parse(s: String, suppliers: Suppliers): Command = s match {
+  def parse(input: String): Command = input match {
     case "r" => PrintRaw
     case "e" => PrintElapsed
     case "h" | "help" => Help

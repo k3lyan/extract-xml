@@ -9,7 +9,7 @@ import cats.syntax.all._
 import java.io.File
 import scala.xml.{Elem, XML}
 
-final case class Suppliers(suppliers: List[SupplierInfo])
+final case class Suppliers(suppliersInfo: List[SupplierInfo])
 
 object Suppliers {
   implicit val suppliersCompanionDecoder: XmlDecoder[Suppliers] = XmlDecoder.of { suppliers =>

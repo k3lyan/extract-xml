@@ -1,15 +1,15 @@
 package Presentation
 
-import Model.Suppliers
+import Model.Forecast
 import cats.effect.IO
 
 object CommandExecutor {
-  def processCommand(cmd: Command, data: Suppliers): IO[Unit] = cmd match {
+  def processCommand(cmd: Command, forecast: Forecast): IO[Unit] = cmd match {
     case PrintRaw => IO {
-      data.suppliers.foreach(supplier => println(s"Supplier: ${supplier.name} - Age: ${supplier.age}"))
+      forecast.suppliers.suppliersInfo.foreach(supplier => println(s"Supplier: ${supplier.name} - Age: ${supplier.age}"))
     }
     case PrintElapsed => IO {
-      data.suppliers.foreach(supplier => println(s"Supplier: ${supplier.name} - Age at T: ${supplier.age + 10}"))
+      forecast.suppliers.suppliersInfo.foreach(supplier => println(s"Supplier: ${supplier.name} - Age at T: ${supplier.age + forecast.elapsedTime}"))
     }
     case Help => help
     case Unknown => IO{ println("Unknown (type 'h' for help)\n") }
