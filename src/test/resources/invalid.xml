@@ -1,0 +1,4 @@
+<suppliers>
+    <supplier name="GlassesRUs" age="wrong age"/>
+    <supplier name="Redstick" age="another wrong age"/>
+</suppliers>
