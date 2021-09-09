@@ -1,14 +1,12 @@
 package Model
 
 import advxml.core.data.{ValidatedNelEx, XmlDecoder}
-import advxml.implicits.{AnyConverterSyntaxOps, XmlContentZoomSyntaxForId}
+import advxml.implicits.AnyConverterSyntaxOps
 import advxml.implicits._
-import advxml.core.data.{ValidatedConverter, XmlDecoder}
 import cats.syntax.all._
-
+import play.api.libs.json.Json
+import scala.xml.XML
 import java.io.File
-import scala.xml.{Elem, XML}
-
 final case class Suppliers(suppliersInfo: List[SupplierInfo])
 
 object Suppliers {
@@ -23,5 +21,10 @@ object Suppliers {
       }.map(Suppliers.apply)
     }
 
-  def getInfo(xmlFile: String): ValidatedNelEx[Suppliers] = XML.loadFile(xmlFile).decode[Suppliers]
+
+  implicit val suppliersWrites = Json.writes[Suppliers]
+
+
+
+  def getInfo(xmlFile: File): ValidatedNelEx[Suppliers] = XML.loadFile(xmlFile).decode[Suppliers]
 }

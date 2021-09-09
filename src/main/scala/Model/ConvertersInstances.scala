@@ -29,8 +29,8 @@ trait ConvertersInstances {
       }
     }
 
-  implicit def optionFromNodeSeqConverter[T](implicit
-                                             converter: ValidatedConverter[NodeSeq, T]): ValidatedConverter[NodeSeq, Option[T]] = Converter.of { nodeSeq =>
+  implicit def optionFromNodeSeqConverter[T](implicit converter: ValidatedConverter[NodeSeq, T]): ValidatedConverter[NodeSeq, Option[T]] =
+    Converter.of { nodeSeq =>
     if (nodeSeq.isEmpty) {
       Option.empty[T].valid
     } else {
