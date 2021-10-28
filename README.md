@@ -1,7 +1,7 @@
 # extract-xml
  
 ## Requirements
- As a business owner, I want to be able to read in a XML file through command line that contains data about my suppliers so that I can query it.
+Extract and parse data from a XML file containing data about my suppliers using a CLI.
  
  
 ## Short Description
